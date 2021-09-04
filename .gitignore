@@ -1,0 +1,13 @@
+.DS_Store
+.dart_tool/
+.histroy/
+.idea/
+build*/
+.packages
+.pub/
+build/
+example/.dart_tool/*
+example/.idea/*
+example/android/*
+example/build/*
+example/ios/Pods/*
