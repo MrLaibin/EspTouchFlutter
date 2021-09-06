@@ -5,14 +5,14 @@ import 'package:flutter/services.dart';
 class EsptouchFlutter {
   static const MethodChannel _channel = const MethodChannel('esptouch_flutter');
 
-  static Future<bool?> connectWifi(
+  static Future<Map?> connectWifi(
     String mSsid,
     String mBssid,
     String pwd, {
     devCount: "1",
     modelGroup: false,
   }) async {
-    final bool? version = await _channel.invokeMethod('connectWifi', {
+    final Map? version = await _channel.invokeMethod('connectWifi', {
       'mSsid': mSsid,
       'mBssid': mBssid,
       'pwd': pwd,
