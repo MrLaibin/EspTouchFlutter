@@ -1,6 +1,6 @@
 name: flutter_esptouch
 description: flutter_esptouch
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/MrLaibin/EspTouchFlutter
 
 environment:
@@ -14,7 +14,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+#  fat file, but missing compatible architecture (have 'i386,x86_64', need 'arm64e')
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
