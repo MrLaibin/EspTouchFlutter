@@ -21,8 +21,8 @@ class EsptouchFlutter {
     });
     return version;
   }
-  static cancelConfig(){
-    final Map? version = await _channel.invokeMethod('getWifiInfo');
+  static cancelConfig()async {
+    final Map? version = await _channel.invokeMethod('cancelConnect');
     return version;
   }
 

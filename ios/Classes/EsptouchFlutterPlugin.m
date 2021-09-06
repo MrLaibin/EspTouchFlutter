@@ -28,9 +28,9 @@
       [_locationManagerSystem requestWhenInUseAuthorization];
       NSDictionary *wifiDic = [self fetchNetInfo];
       result(wifiDic);
-  } else if([@"cancelConnectWifi" isEqualToString:call.method]){
-      if(_esptouchTask!=nil){
-          [_esptouchTask setIsCancelled:YES];
+  } else if([@"cancelConnect" isEqualToString:call.method]){
+      if(self._esptouchTask!=nil){
+          [self._esptouchTask setIsCancelled:YES];
       }
       result(@(YES));
   } else if([@"connectWifi" isEqualToString:call.method]){
