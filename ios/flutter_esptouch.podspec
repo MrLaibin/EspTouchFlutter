@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_esptouch'
-  s.version          = '0.0.1'
+  s.version          = '0.0.4'
   s.summary          = 'flutter_esptouch'
   s.description      = <<-DESC
 esptouch_flutter

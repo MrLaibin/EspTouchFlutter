@@ -109,7 +109,7 @@ public class EsptouchFlutterPlugin implements FlutterPlugin, MethodCallHandler {
         boolean confirmEnable = false;
         if (stateResult.wifiConnected) {
             if (stateResult.is5G) {
-                message = "设备不支持 5G Wi-Fi, 请确认当前连接的 Wi-Fi 为 2.4G, 或者您可以尝试选择组播";
+                message = "设备不支持 5G Wi-Fi, 请确认当前连接的 Wi-Fi 为 2.4G";
             } else {
                 confirmEnable = true;
             }
