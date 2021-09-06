@@ -81,7 +81,6 @@ public class EsptouchFlutterPlugin implements FlutterPlugin, MethodCallHandler {
             }
 
             executeEsptouch(mSsid, pwd, mBssid, devCount, modelGroup ? 1 : 0);
-            result.success("Android2 " + android.os.Build.VERSION.RELEASE);
         } else {
             result.notImplemented();
             _methodResult = null;
@@ -174,15 +173,19 @@ public class EsptouchFlutterPlugin implements FlutterPlugin, MethodCallHandler {
         if (mTask != null) {
             mTask.cancelEsptouch();
         }
-        mTask = new EsptouchAsyncTask4();
+        mTask = new EsptouchAsyncTask4(this);
         mTask.execute(ssid, bssid, password, deviceCount, broadcast);
 
     }
 
     private static class EsptouchAsyncTask4 extends AsyncTask<byte[], IEsptouchResult, List<IEsptouchResult>> {
-
+        private final WeakReference<EsptouchFlutterPlugin> mFlutterPlugin;
         private final Object mLock = new Object();
         private IEsptouchTask mEsptouchTask;
+
+        EsptouchAsyncTask4(EsptouchFlutterPlugin activity) {
+            mFlutterPlugin = new WeakReference<>(activity);
+        }
 
         void cancelEsptouch() {
             cancel(true);
@@ -219,25 +222,18 @@ public class EsptouchFlutterPlugin implements FlutterPlugin, MethodCallHandler {
 
         @Override
         protected void onPostExecute(List<IEsptouchResult> result) {
+            Result methodResult = mFlutterPlugin.get()._methodResult;
             if (result == null) {
+                methodResult.success(false);
                 return;
             }
 
             // check whether the task is cancelled and no results received
             IEsptouchResult firstResult = result.get(0);
-            if (firstResult.isCancelled()) {
-                return;
-            }
-            // the task received some results including cancelled while
-            // executing before receiving enough results
-
-            if (!firstResult.isSuc()) {
-
-                return;
-            }
-
-
-//            resultMsgList.toArray(items);
+            Map resultMap = new HashMap();
+            resultMap.put("sucess", firstResult.isSuc());
+            resultMap.put("cancel", firstResult.isCancelled());
+            methodResult.success(resultMap);
             Log.e(TAG, "配置成功");
         }
     }

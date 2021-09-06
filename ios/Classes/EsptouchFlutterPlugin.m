@@ -39,7 +39,10 @@
       }
       BOOL modeGroup = dic[@"modeGroup"];
       
-      NSArray* result = [self executeForResultsWithSsid:mSsid bssid:mBssid password:pwd taskCount:[devCountStr intValue] broadcast:modeGroup];
+      NSArray* results = [self executeForResultsWithSsid:mSsid bssid:mBssid password:pwd taskCount:[devCountStr intValue] broadcast:modeGroup];
+      ESPTouchResult *espResult=  results[0];
+      NSDictionary * dic2 = @{@"success":@(espResult.isSuc),@"cancel":@(espResult.isCancelled)};
+      result(dic2);
       NSLog(@"==skldfjklj === ");
   } else {
     result(FlutterMethodNotImplemented);
