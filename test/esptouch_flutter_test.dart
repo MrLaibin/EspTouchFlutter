@@ -1,4 +1,4 @@
-import 'package:esptouch_flutter/esptouch_flutter.dart';
+import 'package:flutter_esptouch/esptouch_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
