@@ -28,6 +28,11 @@
       [_locationManagerSystem requestWhenInUseAuthorization];
       NSDictionary *wifiDic = [self fetchNetInfo];
       result(wifiDic);
+  } else if([@"cancelConnectWifi" isEqualToString:call.method]){
+      if(_esptouchTask!=nil){
+          [_esptouchTask setIsCancelled:YES];
+      }
+      result(@(YES));
   } else if([@"connectWifi" isEqualToString:call.method]){
       NSDictionary *dic = call.arguments;
       NSString* mSsid = dic[@"mSsid"];

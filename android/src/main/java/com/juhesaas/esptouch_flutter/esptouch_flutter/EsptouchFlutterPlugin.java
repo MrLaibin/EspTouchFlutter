@@ -67,6 +67,12 @@ public class EsptouchFlutterPlugin implements FlutterPlugin, MethodCallHandler {
         if (call.method.equals("getWifiInfo")) {
             Map wifiResult = onWifiChanged();
             result.success(wifiResult);
+        } else if (call.method.equals("cancelConnectWifi")) {
+            if (mTask.isCancelled()) {
+            } else {
+                mTask.cancelEsptouch();
+            }
+            result.success(true);
         } else if (call.method.equals("connectWifi")) {
             _methodResult = result;
             _call = call;

@@ -21,6 +21,10 @@ class EsptouchFlutter {
     });
     return version;
   }
+  static cancelConfig(){
+    final Map? version = await _channel.invokeMethod('getWifiInfo');
+    return version;
+  }
 
   static Future<Map?> get wifiInfo async {
     final Map? version = await _channel.invokeMethod('getWifiInfo');
