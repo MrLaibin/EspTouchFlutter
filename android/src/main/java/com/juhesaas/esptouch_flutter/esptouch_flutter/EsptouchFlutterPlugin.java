@@ -237,7 +237,7 @@ public class EsptouchFlutterPlugin implements FlutterPlugin, MethodCallHandler {
             // check whether the task is cancelled and no results received
             IEsptouchResult firstResult = result.get(0);
             Map resultMap = new HashMap();
-            resultMap.put("sucess", firstResult.isSuc());
+            resultMap.put("success", firstResult.isSuc());
             resultMap.put("cancel", firstResult.isCancelled());
             methodResult.success(resultMap);
             Log.e(TAG, "配置成功");
