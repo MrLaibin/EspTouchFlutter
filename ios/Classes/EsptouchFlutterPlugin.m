@@ -42,7 +42,7 @@
       if(devCountStr==nil){
           devCountStr=@"1";
       }
-      BOOL modeGroup = dic[@"modeGroup"];
+      BOOL modeGroup = dic[@"modelGroup"];
       
       NSArray* results = [self executeForResultsWithSsid:mSsid bssid:mBssid password:pwd taskCount:[devCountStr intValue] broadcast:modeGroup];
       ESPTouchResult *espResult=  results[0];
