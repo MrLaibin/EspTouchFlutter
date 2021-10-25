@@ -94,10 +94,10 @@
 -(void) onEsptouchResultAddedWithResult: (ESPTouchResult *) result
 {
     NSLog(@"EspTouchDelegateImpl onEsptouchResultAddedWithResult bssid: %@", result.bssid);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self showAlertWithResult:result];
-    });
-    NSString *message = [NSString stringWithFormat:@"%@ %@" , result.bssid, NSLocalizedString(@"EspTouch-result-one", nil)];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"deviceConfigResult" object:message];
+    // dispatch_async(dispatch_get_main_queue(), ^{
+    //     [self showAlertWithResult:result];
+    // });
+    // NSString *message = [NSString stringWithFormat:@"%@ %@" , result.bssid, NSLocalizedString(@"EspTouch-result-one", nil)];
+    // [[NSNotificationCenter defaultCenter] postNotificationName:@"deviceConfigResult" object:message];
 }
 @end
